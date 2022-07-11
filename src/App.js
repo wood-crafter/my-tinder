@@ -32,7 +32,7 @@ const AppRoutes = () => {
 function App() {
   return (
     <Router>
-      <div>
+      <div className='App'>
 
         <AuthProvider>
           <AppRoutes />

@@ -36,7 +36,17 @@ label {
 }
 
 h2 {
+  font-size: 4rem;
   margin-bottom: 5rem;
+  color: #ffcadb;
+  text-shadow: -3px 3px 0px #ffdee9,
+    0.5px 0.5px 0px #ffcdde,
+    1px 1px 0px #fdb8cf,
+    1.5px 1.5px 0px #ffb5ce,
+    2px 2px 0px #ffaac6,
+    2.5px 2.5px 0px #fca1bf,
+    3px 3px 0px #ff9cbd,
+    3.5px 3.5px 0px #ff91b6,
+    4px 4px 0px #ff89b1,
+    4.5px 4.5px 0px #ff80ab;
 }
-
-
