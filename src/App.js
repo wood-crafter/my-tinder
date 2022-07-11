@@ -1,40 +1,44 @@
 import './App.css';
-import React, { useState } from 'react';
-import Login from './Components/Login';
+import React from 'react';
+
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from 'react-router-dom';
+
+import { Login, Home, Users, About } from './views';
+import { RequireAuth } from './components'
+import { AuthProvider } from './providers/useAuth';
+
+const AppRoutes = () => {
+  return (
+    <Routes>
+      <Route
+        path="/users"
+        element={(
+          <RequireAuth>
+            <Users />
+          </RequireAuth>
+        )}
+      />
+      <Route path="/about" element={<About />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/" element={<Home />} />
+    </Routes>
+  )
+}
 
 function App() {
-  const users = [
-    {
-      name: 'hungpv',
-      password: '123'
-    }
-  ]
-  const [user, setUser] = useState({name: ''})
-  const [error, setError] = useState({message: null})
-
-  const doLogin = details => {
-    // do login here
-    console.info(details)
-
-    if(details.name === users[0].name && details.password === users[0].password) {
-      setUser({name: details.name})
-    } else {
-      setError({message: 'details not match'})
-    }
-  }
-
-  const doLogout = () => {
-    console.info("Logged out")
-  }
-
   return (
-    <div className="App">
-      {(user.name !== "") ? (
-        <div>Welcome {user.name}</div>
-      ) :
-      <Login doLogin={doLogin} error={error}></Login>
-    }
-    </div>
+    <Router>
+      <div>
+
+        <AuthProvider>
+          <AppRoutes />
+        </AuthProvider>
+      </div>
+    </Router>
   );
 }
 
