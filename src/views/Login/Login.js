@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import '../CSS/Login.css'
+import './Login.css'
 
-function Login({ doLogin, error }) {
+export function Login({ doLogin, error }) {
   const [details, setDetails] = useState({ name: "", password: "" })
 
   const submitHandler = e => {
@@ -35,5 +35,3 @@ function Login({ doLogin, error }) {
     </div>
   )
 }
-
-export default Login
