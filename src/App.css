@@ -1,5 +1,12 @@
 .App {
+  display: flex;
   text-align: center;
+  margin: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
 }
 .App-header {
   background-color: #282c34;

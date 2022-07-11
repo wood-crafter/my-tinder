@@ -17,7 +17,6 @@ function App() {
     console.info(details)
 
     if(details.name === users[0].name && details.password === users[0].password) {
-      console.info('Logged in')
       setUser({name: details.name})
     } else {
       setError({message: 'details not match'})
@@ -31,7 +30,7 @@ function App() {
   return (
     <div className="App">
       {(user.name !== "") ? (
-        <div>Welcome</div>
+        <div>Welcome {user.name}</div>
       ) :
       <Login doLogin={doLogin} error={error}></Login>
     }
