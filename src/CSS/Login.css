@@ -22,18 +22,3 @@
   height: 35rem;
   width: 25rem;
 }
-
-h2 {
-  color: mix(#fff, #e91e63, 85%);
-	font-size: calc(1em + 20vw) ;  
-	font-weight: 900;
-	text-shadow: 
-		-0.0075em 0.0075em 0 mix(#fff, #e91e63, 94%),
-		0.005em 0.005em 0 mix(#fff, #e91e63, 60%),
-		0.01em 0.01em 0 mix(#fff, #e91e63, 62%), 
-		0.015em 0.015em mix(#fff, #e91e63, 64%), 
-		0.02em 0.02em 0 mix(#fff, #e91e63, 66%), 
-		0.025em 0.025em 0 mix(#fff, #e91e63, 68%),
-		0.03em 0.03em 0 mix(#fff, #e91e63, 70%),
-		0.035em 0.035em 0 mix(#fff, #e91e63, 72%);
-}

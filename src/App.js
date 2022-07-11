@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
-import Login from './Componants/Login';
+import Login from './Components/Login';
 
 function App() {
   const users = [
