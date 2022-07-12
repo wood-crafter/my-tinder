@@ -30,11 +30,11 @@ export function Login(props) {
         <div className='form-inner'>
           <h2>Login</h2>
           <div className='form-group'>
-            <label htmlFor='name'>Name:</label>
+            <label htmlFor='name'>Name :</label>
             <input type='text' name='name' id='name' onChange={e => setUsername(e.target.value)} value={username} />
           </div>
           <div className='form-group'>
-            <label htmlFor='password'>Password:</label>
+            <label htmlFor='password'>Password :</label>
             <input type='password' name='password' id='password' onChange={e => setPassword(e.target.value)} value={password} />
           </div>
           {error && <div style={{ color: 'red' }}>{error}</div>}
