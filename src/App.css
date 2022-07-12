@@ -8,5 +8,10 @@
   bottom: 0;
   right: 0;
   background-color: #fbd7e3;
-  font-family: "Niconne";
+  font-family: "Niconne", cursive;
+  color: #31a1fd,
+}
+
+*:focus {
+  outline: none;
 }
