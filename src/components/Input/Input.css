@@ -1,0 +1,11 @@
+.input__styles {
+  background-color: #ffcedf ;
+  border-radius: 0.4rem;
+  border: 0;
+  color: white;
+}
+
+.input__styles:focus {
+  border: 1px solid white;
+  background-color: #fccedd ;
+}
