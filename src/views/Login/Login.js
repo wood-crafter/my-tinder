@@ -38,7 +38,7 @@ export function Login(props) {
             <input type='password' name='password' id='password' onChange={e => setPassword(e.target.value)} value={password} />
           </div>
           {error && <div style={{ color: 'red' }}>{error}</div>}
-          <button type='submit' className='submit'>Login</button>
+          <div className='submit-div'><button type='submit' className='submit'>Login</button></div>
         </div>
       </form>
     </div>

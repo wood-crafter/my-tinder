@@ -14,14 +14,10 @@
   align-items: center;
   justify-content: center;
   border-radius: 2rem;
-  border: 0.3rem solid #c1e3ff;
+  border: 0.3rem solid #ffffff;
   height: 40rem;
   width: 30rem;
   background-color: #c1e3ff;
-}
-
-.login-form:hover {
-  border: 0.3rem solid #ffffff;
 }
 
 .form-inner {
@@ -77,6 +73,21 @@ input {
 input:focus {
   border: 1px solid white;
   background-color: #fccedd ;
+}
+
+.submit-div {
+  margin-top: 4rem;
+  display: flex;
+  background-color: rgb(255, 176, 176);
+  height: 2rem;
+  width: 7rem;
   border-radius: 0.4rem;
-  color: white;
+}
+
+.submit {
+  border: 0;
+  background-color: rgba(255,255,255,0);
+  flex-grow: 1;
+  padding: 0;
+  color: #31a1fd;
 }
