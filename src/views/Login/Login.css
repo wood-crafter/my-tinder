@@ -78,4 +78,6 @@ h2 {
   flex-grow: 1;
   padding: 0;
   color: #31a1fd;
+  font-family: "Niconne", cursive;
+  font-size: 1rem;
 }
