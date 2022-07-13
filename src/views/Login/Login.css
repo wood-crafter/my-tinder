@@ -78,7 +78,8 @@ input:focus {
 .submit-div {
   margin-top: 4rem;
   display: flex;
-  background-color: rgb(255, 176, 176);
+  background-image: url('../../../public/login-button.jpg');
+  background-size: cover;
   height: 2rem;
   width: 7rem;
   border-radius: 0.4rem;
@@ -90,4 +91,6 @@ input:focus {
   flex-grow: 1;
   padding: 0;
   color: #31a1fd;
+  font-family: "Niconne", cursive;
+  font-size: 1rem;
 }
