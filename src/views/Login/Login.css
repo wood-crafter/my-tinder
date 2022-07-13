@@ -16,6 +16,7 @@
   border-radius: 2rem;
   border: 0.3rem solid #ffffff;
   height: 40rem;
+  max-height: calc(100vh - 1.6rem);
   width: 30rem;
   background-color: #c1e3ff;
 }
