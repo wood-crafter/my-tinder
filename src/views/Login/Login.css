@@ -80,11 +80,10 @@ h2 {
   width: 7rem;
   border-radius: 0.4rem;
   backdrop-filter: blur(5rem);
-  transition: 0.5s;
   box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
 }
 
-.submit-div:hover {
+.submit:hover {
   cursor: pointer;
 }
 
@@ -96,5 +95,4 @@ h2 {
   color: #31a1fd;
   font-family: "Niconne", cursive;
   font-size: 1rem;
-  pointer-events: none;
 }

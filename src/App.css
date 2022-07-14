@@ -23,6 +23,7 @@ section {
   justify-content: center;
   align-items: center;
   background: linear-gradient(to bottom, #fbd7e3, #dff1ff);
+  z-index: -1;
 }
 
 section .color {
