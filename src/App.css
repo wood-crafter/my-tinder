@@ -7,11 +7,49 @@
   top: 0;
   bottom: 0;
   right: 0;
-  background-color: #fbd7e3;
   font-family: "Niconne", cursive;
   color: #31a1fd,
 }
 
 *:focus {
   outline: none;
+}
+
+section {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, #fbd7e3, #dff1ff);
+}
+
+section .color {
+  position: absolute;
+  filter: blur(15rem);
+}
+
+section .color:nth-child(1) {
+  background: #8fbde2;
+  width: 50rem;
+  height: 50rem;
+  top: -25rem;
+  left: 3rem;
+}
+
+section .color:nth-child(2) {
+  background: #ddaebd;
+  width: 50rem;
+  height: 50rem;
+  bottom: -10rem;
+  right: 0;
+}
+
+section .color:nth-child(3) {
+  background: #e6e6bd;
+  width: 20rem;
+  height: 20rem;
+  bottom: 3rem;
+  right: 0px;
 }

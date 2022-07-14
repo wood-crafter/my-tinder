@@ -14,11 +14,17 @@
   align-items: center;
   justify-content: center;
   border-radius: 2rem;
-  border: 0.3rem solid #ffffff;
+  border: 0.2rem solid rgba(255, 255, 255, 0.4);
   height: 40rem;
   max-height: calc(100vh - 1.6rem);
   width: 30rem;
-  background-color: #c1e3ff;
+  backdrop-filter: blur(5rem);  
+}
+
+.login-form:hover {
+  transform: scale(1.01);
+  border: 0.2rem solid rgba(255, 255, 255, 0.8);
+  cursor: pointer;
 }
 
 .form-inner {
@@ -68,10 +74,18 @@ h2 {
   margin-top: 4rem;
   display: flex;
   background-image: url('../../../public/login-button.jpg');
+  background-color: rgba(255,255,255,0);
   background-size: cover;
   height: 2rem;
   width: 7rem;
   border-radius: 0.4rem;
+  backdrop-filter: blur(5rem);
+  transition: 0.5s;
+  box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+}
+
+.submit-div:hover {
+  cursor: pointer;
 }
 
 .submit {
@@ -82,4 +96,5 @@ h2 {
   color: #31a1fd;
   font-family: "Niconne", cursive;
   font-size: 1rem;
+  pointer-events: none;
 }

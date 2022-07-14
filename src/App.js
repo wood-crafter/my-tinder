@@ -33,7 +33,11 @@ function App() {
   return (
     <Router>
       <div className='App'>
-
+        <section>
+          <div className='color'></div>
+          <div className='color'></div>
+          <div className='color'></div>
+        </section>
         <AuthProvider>
           <AppRoutes />
         </AuthProvider>
