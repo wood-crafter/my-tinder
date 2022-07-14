@@ -31,7 +31,7 @@ section .color {
 }
 
 section .color:nth-child(1) {
-  background: #8fbde2;
+  background: #97c7ee;
   width: 50rem;
   height: 50rem;
   top: -25rem;
@@ -39,7 +39,7 @@ section .color:nth-child(1) {
 }
 
 section .color:nth-child(2) {
-  background: #ddaebd;
+  background: #ebb9c9;
   width: 50rem;
   height: 50rem;
   bottom: -10rem;
@@ -47,7 +47,7 @@ section .color:nth-child(2) {
 }
 
 section .color:nth-child(3) {
-  background: #e6e6bd;
+  background: #f0f0c3;
   width: 20rem;
   height: 20rem;
   bottom: 3rem;
