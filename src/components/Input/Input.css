@@ -8,4 +8,5 @@
 .input__styles:focus {
   border: 1px solid white;
   background-color: #fccedd ;
+  transform: scale(1.02);
 }

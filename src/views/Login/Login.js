@@ -29,14 +29,12 @@ export function Login(props) {
     <div className='login'>
       <form onSubmit={submitHandler} className='login-form'>
         <div className='form-inner'>
-          <h2>Login</h2>
+          <h2>Finder</h2>
           <div className='form-group'>
-            <label htmlFor='name'>Name :</label>
-            <Input type='text' name='name' id='name' onChange={e => setUsername(e.target.value)} value={username} />
+            <Input type='text' name='name' id='name' onChange={e => setUsername(e.target.value)} value={username} placeholder='Name' />
           </div>
           <div className='form-group'>
-            <label htmlFor='password'>Password :</label>
-            <Input type='password' name='password' id='password' onChange={e => setPassword(e.target.value)} value={password} />
+            <Input type='password' name='password' id='password' onChange={e => setPassword(e.target.value)} value={password} placeholder='Password' />
           </div>
           {error && <div style={{ color: 'red' }}>{error}</div>}
           <div className='submit-div'><button type='submit' className='submit'>Login</button></div>
