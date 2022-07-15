@@ -14,12 +14,13 @@
   align-items: center;
   justify-content: center;
   border-radius: 2rem;
-  border: 0.2rem solid rgba(255, 255, 255, 0.4);
+  border: 0.1rem solid rgba(255, 255, 255, 0.4);
   height: 40rem;
   max-height: calc(100vh - 1.6rem);
   width: 30rem;
-  backdrop-filter: blur(8rem);
   transform: 0.6s;
+  box-shadow: 0 1rem 5rem rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5rem);
 }
 
 .login-form:hover {
