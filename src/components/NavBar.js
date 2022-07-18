@@ -6,13 +6,13 @@ export const NavBar = () => {
     <nav className='navbar'>
       <ul className='content'>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/" className='react-link'>Home</Link>
         </li>
         <li>
-          <Link to="/about">About</Link>
+          <Link to="/about" className='react-link'>About</Link>
         </li>
         <li>
-          <Link to="/users">Users</Link>
+          <Link to="/users" className='react-link'>Users</Link>
         </li>
       </ul>
     </nav>

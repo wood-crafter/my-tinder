@@ -3,7 +3,7 @@ import { useAuth } from '../../providers/useAuth'
 import './Home.css'
 
 export const Home = () => {
-  const { user } = useAuth()
+  // const { user } = useAuth()
 
   return (
     <div className='home'>
