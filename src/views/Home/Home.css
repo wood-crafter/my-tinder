@@ -9,15 +9,38 @@
   align-items: center;
 }
 
-.main-pic {
-  width: 30rem;
-  height: 30rem;
+.left-pic {
+  border-radius: 1.5rem;
+  border: 0.15rem solid rgba(255, 255, 255, 0.5);
+  width: 25rem;
+  height: 35rem;
+  object-fit: cover;
+  transform: scale(0.6);
+  opacity: 0.3;
+}
+
+.middle-pic {
+  border-radius: 1.5rem;
+  border: 0.15rem solid rgba(255, 255, 255, 0.5);
+  width: 25rem;
+  height: 35rem;
+  object-fit: cover;
+}
+
+.right-pic {
+  border-radius: 1.5rem;
+  border: 0.15rem solid rgba(255, 255, 255, 0.5);
+  width: 25rem;
+  height: 35rem;
+  object-fit: cover;
+  transform: scale(0.6);
+  opacity: 0.3;
 }
 
 .main-pic-div {
   display: flex;
-  width: 30rem;
-  height: 30rem;
-  justify-content: center;
+  width: 100vw;
+  height: 35rem;
+  justify-content: space-around;
   align-items: center;
 }
