@@ -19,7 +19,7 @@
   max-height: calc(100vh - 1.6rem);
   width: 30rem;
   transform: 0.6s;
-  box-shadow: 0 1rem 5rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1rem 5rem rgba(0, 0, 0, 0.05);
   backdrop-filter: blur(5rem);
 }
 
