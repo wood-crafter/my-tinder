@@ -1,5 +1,5 @@
 import { NavBar } from '../../components'
-import { useAuth } from '../../providers/useAuth'
+// import { useAuth } from '../../providers/useAuth'
 import './Home.css'
 
 export const Home = () => {
