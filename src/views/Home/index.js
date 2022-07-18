@@ -1,15 +1,16 @@
 import { NavBar } from '../../components'
 import { useAuth } from '../../providers/useAuth'
+import './Home.css'
 
 export const Home = () => {
   const { user } = useAuth()
 
   return (
-    <div>
+    <div className='home'>
       <NavBar />
-      <h4>
-        {`Hello, ${user?.username ?? 'guess'}...!`}
-      </h4>
+      <div className='main-pic-div'>
+        <img className='main-pic' src="demo-main-pic.jpg" alt="red panda" />
+      </div>
     </div>
   )
 }

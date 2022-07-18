@@ -1,0 +1,15 @@
+.navbar {
+  display: flex;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.content {
+  display: flex;
+  margin: 0;
+  flex-grow: 1;
+  flex-direction: row;
+  justify-content: space-around;
+}
