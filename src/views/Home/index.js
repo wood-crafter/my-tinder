@@ -10,9 +10,9 @@ const getDog = async () => {
 
 export const Home = () => {
   // const { user } = useAuth()
-  const [ left, setLeft ] = useState('')
-  const [ mid, setMid ] = useState('')
-  const [ right, setRight ] = useState('')
+  const [ left, setLeft ] = useState(null)
+  const [ mid, setMid ] = useState(null)
+  const [ right, setRight ] = useState(null)
 
   useEffect(() => {
     getDog().then((dog) => {
@@ -36,9 +36,9 @@ export const Home = () => {
     <div className='home'>
       <NavBar />
       <div className='main-pic-div'>
-        <img className='left-pic' src={left} alt="red panda" />
-        <img className='middle-pic' src={mid} alt="red panda" />
-        <img className='right-pic' src={right} alt="red panda" />
+        <img className='left-pic' src={left ?? './demo-main-pic.jpg'} />
+        <img className='middle-pic' src={mid ?? './demo-main-pic.jpg'} />
+        <img className='right-pic' src={right ?? './demo-main-pic.jpg'} />
       </div>
     </div>
   )
