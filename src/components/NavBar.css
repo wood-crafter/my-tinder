@@ -18,10 +18,27 @@
   margin: 0;
   flex-grow: 1;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: flex-end;
   list-style-type: none;
 }
 
 .react-link {
   text-decoration: none;
+}
+
+ul {
+  height: 100%;
+}
+
+li {
+  height: 100%;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+li:hover {
+  background-color: rgba(0, 0, 0, 0.2);
 }
