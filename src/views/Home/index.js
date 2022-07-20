@@ -32,13 +32,29 @@ export const Home = () => {
     })
   }, [])
 
+  const nextClickHandler = async () => {
+    const nextLeft = await getDog()
+    setRight(mid)
+    setMid(left)
+    setLeft(nextLeft.message)
+  }
+
+  const previousClickHandler = async () => {
+    const nextRight = await getDog()
+    setLeft(mid)
+    setMid(right)
+    setRight(nextRight.message)
+  }
+
   return (
     <div className='home'>
       <NavBar />
       <div className='main-pic-div'>
-        <img className='left-pic' src={left ?? './demo-main-pic.jpg'} />
-        <img className='middle-pic' src={mid ?? './demo-main-pic.jpg'} />
-        <img className='right-pic' src={right ?? './demo-main-pic.jpg'} />
+        <img className='left-pic' src={left ?? './demo-main-pic.jpg'} alt='' />
+        <button onClick={previousClickHandler}>Prev</button>
+        <img className='middle-pic' src={mid ?? './demo-main-pic.jpg'} alt='' />
+        <button onClick={nextClickHandler}>Next</button>
+        <img className='right-pic' src={right ?? './demo-main-pic.jpg'} alt='' />
       </div>
     </div>
   )
