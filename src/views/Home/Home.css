@@ -10,6 +10,34 @@
   align-items: center;
 }
 
+.previous {
+  background-color: #ffbdd2;
+  border: 0;
+  border-radius: 1rem;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+}
+
+.previous:hover {
+  background-color: #fdadc7;
+  cursor: pointer;
+}
+
+.next {
+  background-color: #ffbdd2;
+  border: 0;
+  border-radius: 1rem;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+}
+
+.next:hover {
+  background-color: #fdadc7;
+  cursor: pointer;
+}
+
 img {
   object-fit: cover;
 }
@@ -36,6 +64,14 @@ img {
     height: 35rem;
     justify-content: space-around;
     align-items: center;
+  }
+
+  .next {
+    display: none;
+  }
+
+  .previous {
+    display: none;
   }
 }
 

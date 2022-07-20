@@ -51,9 +51,9 @@ export const Home = () => {
       <NavBar />
       <div className='main-pic-div'>
         <img className='left-pic' src={left ?? './demo-main-pic.jpg'} alt='' />
-        <button onClick={previousClickHandler}>Prev</button>
+        <button onClick={previousClickHandler} className='previous' >&#8249;</button>
         <img className='middle-pic' src={mid ?? './demo-main-pic.jpg'} alt='' />
-        <button onClick={nextClickHandler}>Next</button>
+        <button onClick={nextClickHandler} className='next' >&#8250;</button>
         <img className='right-pic' src={right ?? './demo-main-pic.jpg'} alt='' />
       </div>
     </div>
