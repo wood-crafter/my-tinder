@@ -96,3 +96,8 @@ input {
   flex-grow: 1;
   padding-left: 1rem;
 }
+
+.login-error {
+  color: red;
+  height: 1rem;
+}
