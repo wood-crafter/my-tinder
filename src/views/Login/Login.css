@@ -7,6 +7,7 @@
   right: 0;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .login-form {
@@ -70,7 +71,7 @@ h2 {
 .submit-div {
   margin-top: 2rem;
   display: flex;
-  background-color: rgba(255,255,255,0);
+  background-color: rgba(255, 255, 255, 0);
   background-size: cover;
   height: 3rem;
   width: 20rem;
@@ -95,7 +96,7 @@ h2 {
 .submit {
   border: 0;
   position: relative;
-  background-color: rgba(255,255,255,0);
+  background-color: rgba(255, 255, 255, 0);
   flex-grow: 1;
   padding: 0;
   color: #31a1fd;
@@ -110,7 +111,7 @@ h2 {
 .signup {
   border: 0;
   position: relative;
-  background-color: rgba(255,255,255,0);
+  background-color: rgba(255, 255, 255, 0);
   padding: 0;
   color: #31a1fd;
   font-size: 1rem;
@@ -127,4 +128,48 @@ input {
 .login-error {
   color: red;
   height: 1rem;
+}
+
+.signup-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2rem;
+  border: 0.1rem solid rgba(255, 255, 255, 0.4);
+  height: 40rem;
+  max-height: calc(100vh - 1.6rem);
+  width: 30rem;
+  transform: 0.6s;
+  box-shadow: 0 1rem 5rem rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(5rem);
+}
+
+.showing {
+  animation: slide-in 0.65s forwards;
+  -webkit-animation: slide-in 0.65s forwards;
+}
+
+.not-showing {
+  animation: slide-out 0.65s forwards;
+  -webkit-animation: slide-out 0.65s forwards;
+}
+
+@keyframes slide-in {
+  0% { transform: translateX(200vw); }
+  100% { transform: translateX(0%); }
+}
+
+@-webkit-keyframes slide-in {
+  0% { transform: translateX(200vw); }
+  100% { -webkit-transform: translateX(0%); }
+}
+
+@keyframes slide-out {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100vw); }
+}
+
+@-webkit-keyframes slide-out {
+  0% { -webkit-transform: translateX(0%); }
+  100% { -webkit-transform: translateX(-100%); }
 }
