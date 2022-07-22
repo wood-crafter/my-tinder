@@ -1,11 +1,5 @@
 import { createContext, useContext, useState } from 'react'
-
-const users = [
-  {
-    username: 'hungpv',
-    password: '123'
-  }
-]
+import { postData } from './fetchRequest'
 
 export const AuthContext = createContext(null)
 export const AuthProvider = ({ children }) => {
@@ -23,18 +17,17 @@ export const useAuth = () => {
 
   return {
     user,
-    async attemptLogin (username, password) {
-      // TODO: Auth API here
-      const matchUser = users
-        .find(user => user.username === username && user.password === password)
+    async attemptLogin(username, password) {
+      const {status_code} = await postData('https://alpha-sneu.xyz/api/v1/users/signin', {username, password})
 
-      if (matchUser) {
-        setUser(matchUser)
-      } else {
+      if(status_code === 200) {
+        setUser({username})
+      }
+      else {
         throw new Error('Credentials mismatch...!')
       }
     },
-    async logout () {
+    async logout() {
       setUser(null)
     }
   }
