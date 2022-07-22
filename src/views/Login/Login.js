@@ -38,6 +38,10 @@ export function Login(props) {
           </div>
           <div style={{ display: error ? 'block' : 'hidden' }} className='login-error' >{error}</div>
           <div className='submit-div'><button type='submit' className='submit'>Login</button></div>
+          <div className='extra-action'>
+            <div>Forgot password</div>
+            <button className='signup'>Signup</button>
+          </div>
         </div>
       </form>
     </div>

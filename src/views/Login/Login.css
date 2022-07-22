@@ -52,7 +52,8 @@
 
 h2 {
   font-size: 4.5rem;
-  margin-bottom: 5rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
   color: #ffbdd2;
   text-shadow: -3px 3px 0px #ffdee9,
     0.5px 0.5px 0px #ffcdde,
@@ -67,14 +68,23 @@ h2 {
 }
 
 .submit-div {
-  margin-top: 4rem;
+  margin-top: 2rem;
   display: flex;
   background-color: rgba(255,255,255,0);
   background-size: cover;
   height: 3rem;
-  width: 12rem;
-  border-radius: 0.4rem;
+  width: 20rem;
   box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+}
+
+.extra-action {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-size: cover;
+  height: 3rem;
+  width: 20rem;
 }
 
 .submit:hover {
@@ -90,6 +100,23 @@ h2 {
   padding: 0;
   color: #31a1fd;
   font-size: 1rem;
+}
+
+.signup:hover {
+  cursor: pointer;
+  border: 0.2rem solid #8eccff;
+}
+
+.signup {
+  border: 0;
+  position: relative;
+  background-color: rgba(255,255,255,0);
+  padding: 0;
+  color: #31a1fd;
+  font-size: 1rem;
+  box-shadow: 0 3px 30px rgba(0, 0, 0, 0.1);
+  height: 3rem;
+  width: 8rem;
 }
 
 input {
