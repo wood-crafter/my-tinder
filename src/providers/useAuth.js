@@ -1,7 +1,6 @@
 import { createContext, useContext, useState } from 'react'
 import { postData } from './fetchRequest'
-import loginURL from './reqestURL'
-import signupURL from './reqestURL'
+import {loginURL, signupURL} from './requestURL'
 
 export const AuthContext = createContext(null)
 export const AuthProvider = ({ children }) => {
