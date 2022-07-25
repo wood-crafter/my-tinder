@@ -9,11 +9,12 @@ export function Login(props) {
   const [username, setUsername] = useState('')
   const [isLoginShow, setIsLoginShow] = useState(true)
   const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
   const [error, setError] = useState('')
-  const { attemptLogin } = useAuth()
+  const { attemptLogin, attemptSignup } = useAuth()
   const navigate = useNavigate()
 
-  const submitHandler = async e => {
+  const signinHandler = async e => {
     e.preventDefault()
 
     setError('')
@@ -27,12 +28,32 @@ export function Login(props) {
     }
   }
 
+  const signupHandler = async e => {
+    e.preventDefault()
+
+    if(password !== confirmPassword) {
+      setError('Confirm password not match')
+      return
+    }
+
+    setError('')
+
+    try {
+      await attemptSignup(username, password)
+
+      navigate(redirectTo, { replace: true })
+    } catch (error) {
+      setError(error.message)
+    }
+  }
+
   const changeFormShowingHandler = async e => {
+    setError('')
     setIsLoginShow(!isLoginShow)
   }
   return (
     <div className='login'>
-      <form onSubmit={submitHandler} className={`login-form ${isLoginShow ? 'showing' : 'not-showing'}`}>
+      <form onSubmit={signinHandler} className={`login-form ${isLoginShow ? 'showing' : 'not-showing'}`}>
         <div className='form-inner'>
           <h2>Finder</h2>
           <div className='form-group'>
@@ -50,7 +71,7 @@ export function Login(props) {
         </div>
       </form>
 
-      <form onSubmit={submitHandler} className={`signup-form ${isLoginShow ? 'not-showing' : 'showing'}`}>
+      <form onSubmit={signupHandler} className={`signup-form ${isLoginShow ? 'not-showing' : 'showing'}`}>
         <div className='form-inner'>
           <h2>Finder</h2>
           <div className='form-group'>
@@ -60,7 +81,7 @@ export function Login(props) {
             <Input type='password' name='password' id='password' onChange={e => setPassword(e.target.value)} value={password} placeholder='Password' />
           </div>
           <div className='form-group'>
-            <Input type='password' name='confirmPassword' id='confirm_password' onChange={e => setPassword(e.target.value)} value={password} placeholder='Confirm Password' />
+            <Input type='password' name='confirmPassword' id='confirm_password' onChange={e => setConfirmPassword(e.target.value)} value={confirmPassword} placeholder='Confirm Password' />
           </div>
           <div style={{ display: error ? 'block' : 'hidden' }} className='login-error' >{error}</div>
           <div className='submit-div'><button type='submit' className='submit'>Signup</button></div>

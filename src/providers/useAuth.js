@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from 'react'
 import { postData } from './fetchRequest'
+import {loginURL, signupURL} from './requestURL'
 
 export const AuthContext = createContext(null)
 export const AuthProvider = ({ children }) => {
@@ -18,13 +19,27 @@ export const useAuth = () => {
   return {
     user,
     async attemptLogin(username, password) {
-      const {status_code} = await postData('https://alpha-sneu.xyz/api/v1/users/signin', {username, password})
+      const {status_code: statusCode} = await postData(loginURL, {username, password})
 
-      if(status_code === 200) {
+      if(statusCode === 200) {
         setUser({username})
       }
       else {
         throw new Error('Credentials mismatch...!')
+      }
+    },
+    async attemptSignup(username, password) {
+      const {status_code: statusCode, errors} = await postData(signupURL, {username, password})
+
+      if(statusCode === 200) {
+        setUser({username})
+        return
+      }
+      if(statusCode === 409) {
+        throw new Error('Signup infomation existed')
+      }
+      else {
+        throw new Error(errors)
       }
     },
     async logout() {
