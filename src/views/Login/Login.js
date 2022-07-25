@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router'
 import { Input } from '../../components'
-import { useAuth } from '../../providers/useAuth'
-import './Login.css'
+import { useAuth } from '../../providers/use-auth'
+import './login.css'
 
 export function Login(props) {
   const { redirectTo = '/' } = props

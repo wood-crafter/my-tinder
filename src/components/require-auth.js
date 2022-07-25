@@ -1,5 +1,5 @@
 import { useLocation, Navigate } from 'react-router-dom';
-import { useAuth } from '../providers/useAuth'
+import { useAuth } from '../providers/use-auth'
 
 export function RequireAuth({ children }) {
   const { user } = useAuth()

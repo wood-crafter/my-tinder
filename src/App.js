@@ -1,4 +1,4 @@
-import './App.css';
+import './app.css';
 import React from 'react';
 
 import {
@@ -9,7 +9,7 @@ import {
 
 import { Login, Home, Users, About } from './views';
 import { RequireAuth } from './components'
-import { AuthProvider } from './providers/useAuth';
+import { AuthProvider } from './providers/use-auth';
 
 const AppRoutes = () => {
   return (
