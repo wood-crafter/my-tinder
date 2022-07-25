@@ -27,6 +27,19 @@ export const useAuth = () => {
         throw new Error('Credentials mismatch...!')
       }
     },
+    async attemptSignup(username, password) {
+      const {status_code} = await postData('https://alpha-sneu.xyz/api/v1/users/signup', {username, password})
+
+      if(status_code === 200) {
+        setUser({username})
+      }
+      if(status_code === 409) {
+        throw new Error('Signup infomation existed')
+      }
+      else {
+        throw new Error('Error')
+      }
+    },
     async logout() {
       setUser(null)
     }
