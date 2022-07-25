@@ -32,6 +32,7 @@ export const useAuth = () => {
 
       if(status_code === 200) {
         setUser({username})
+        return
       }
       if(status_code === 409) {
         throw new Error('Signup infomation existed')
