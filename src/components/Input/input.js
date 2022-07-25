@@ -1,4 +1,4 @@
-import './Input.css'
+import './input.css'
 
 export const Input = props => {
   return (
