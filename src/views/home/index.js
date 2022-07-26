@@ -1,16 +1,19 @@
 import { NavBar } from '../../components'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
+import { AuthContext } from '../../providers/use-auth'
+import { Navigate } from "react-router-dom";
 import './home.css'
 
 const getDog = async () => {
   return await fetch('https://dog.ceo/api/breeds/image/random')
-  .then(response => response.json())
+    .then(response => response.json())
 }
 
 export const Home = () => {
-  const [ left, setLeft ] = useState(null)
-  const [ mid, setMid ] = useState(null)
-  const [ right, setRight ] = useState(null)
+  const { user } = useContext(AuthContext)
+  const [left, setLeft] = useState(null)
+  const [mid, setMid] = useState(null)
+  const [right, setRight] = useState(null)
 
   useEffect(() => {
     getDog().then((dog) => {
@@ -44,6 +47,8 @@ export const Home = () => {
     setRight(nextRight.message)
   }
 
+  if (!user) return <Navigate to="/login" />
+
   return (
     <div className='home'>
       <NavBar />
@@ -56,4 +61,5 @@ export const Home = () => {
       </div>
     </div>
   )
+
 }
