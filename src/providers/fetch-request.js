@@ -10,3 +10,8 @@ export const postData = async (url, data) => {
   })
   return response.json()
 }
+
+export const getDog = async () => {
+  return await fetch('https://dog.ceo/api/breeds/image/random')
+    .then(response => response.json())
+}

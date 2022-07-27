@@ -3,11 +3,7 @@ import React, { useEffect, useState, useContext } from 'react'
 import { AuthContext } from '../../providers/use-auth'
 import { Navigate } from "react-router-dom";
 import './home.css'
-
-const getDog = async () => {
-  return await fetch('https://dog.ceo/api/breeds/image/random')
-    .then(response => response.json())
-}
+import { getDog } from '../../providers/fetch-request';
 
 export const Home = () => {
   const { user } = useContext(AuthContext)
