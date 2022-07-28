@@ -12,21 +12,14 @@ export const Home = () => {
   const [right, setRight] = useState(null)
 
   useEffect(() => {
-    getDog().then((dog) => {
-      setLeft(dog.message)
-    })
-  }, [])
-
-  useEffect(() => {
-    getDog().then((dog) => {
-      setMid(dog.message)
-    })
-  }, [])
-
-  useEffect(() => {
-    getDog().then((dog) => {
-      setRight(dog.message)
-    })
+    Promise.all([getDog(), getDog(), getDog()])
+      .then(dogs => {
+        const [leftDog, midDog, rightDog] = dogs.map(dog => dog.message)
+  
+        setLeft(leftDog)
+        setMid(midDog)
+        setRight(rightDog)
+      })
   }, [])
 
   const nextClickHandler = async () => {
