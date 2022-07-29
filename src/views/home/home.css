@@ -10,6 +10,10 @@
   align-items: center;
 }
 
+.random-image {
+  display: none;
+}
+
 .previous {
   background-color: #ffbdd2;
   border: 0;
