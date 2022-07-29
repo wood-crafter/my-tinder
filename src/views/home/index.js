@@ -1,5 +1,5 @@
 import { NavBar } from '../../components'
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState, useContext, useRef } from 'react'
 import { AuthContext } from '../../providers/use-auth'
 import { Navigate } from "react-router-dom";
 import './home.css'
@@ -10,16 +10,20 @@ export const Home = () => {
   const [left, setLeft] = useState(null)
   const [mid, setMid] = useState(null)
   const [right, setRight] = useState(null)
+  const isFirstMount = useRef(true)
 
   useEffect(() => {
-    Promise.all([getDog(), getDog(), getDog()])
-      .then(dogs => {
-        const [leftDog, midDog, rightDog] = dogs.map(dog => dog.message)
-  
-        setLeft(leftDog)
-        setMid(midDog)
-        setRight(rightDog)
-      })
+    if (isFirstMount.current) {
+      isFirstMount.current = false
+      Promise.all([getDog(), getDog(), getDog()])
+        .then(dogs => {
+          const [leftDog, midDog, rightDog] = dogs.map(dog => dog.message)
+
+          setLeft(leftDog)
+          setMid(midDog)
+          setRight(rightDog)
+        })
+    }
   }, [])
 
   const nextClickHandler = async () => {
