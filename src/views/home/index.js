@@ -23,16 +23,16 @@ export const Home = () => {
   }, [])
 
   const nextClickHandler = async () => {
-    const nextLeft = await getDog()
     setRight(mid)
     setMid(left)
+    const nextLeft = await getDog()
     setLeft(nextLeft.message)
   }
 
   const previousClickHandler = async () => {
-    const nextRight = await getDog()
     setLeft(mid)
     setMid(right)
+    const nextRight = await getDog()
     setRight(nextRight.message)
   }
 
