@@ -3,11 +3,7 @@ import React, { useEffect, useState, useContext } from 'react'
 import { AuthContext } from '../../providers/use-auth'
 import { Navigate } from "react-router-dom";
 import './home.css'
-
-const getDog = async () => {
-  return await fetch('https://dog.ceo/api/breeds/image/random')
-    .then(response => response.json())
-}
+import { getDog } from '../../providers/fetch-request';
 
 export const Home = () => {
   const { user } = useContext(AuthContext)
@@ -16,21 +12,14 @@ export const Home = () => {
   const [right, setRight] = useState(null)
 
   useEffect(() => {
-    getDog().then((dog) => {
-      setLeft(dog.message)
-    })
-  }, [])
-
-  useEffect(() => {
-    getDog().then((dog) => {
-      setMid(dog.message)
-    })
-  }, [])
-
-  useEffect(() => {
-    getDog().then((dog) => {
-      setRight(dog.message)
-    })
+    Promise.all([getDog(), getDog(), getDog()])
+      .then(dogs => {
+        const [leftDog, midDog, rightDog] = dogs.map(dog => dog.message)
+  
+        setLeft(leftDog)
+        setMid(midDog)
+        setRight(rightDog)
+      })
   }, [])
 
   const nextClickHandler = async () => {
