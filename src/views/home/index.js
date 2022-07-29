@@ -3,7 +3,7 @@ import React, { useEffect, useState, useContext } from 'react'
 import { AuthContext } from '../../providers/use-auth'
 import { Navigate } from "react-router-dom";
 import './home.css'
-import { getDog } from '../../providers/fetch-request';
+import { getDog } from '../../utils/fetch-request';
 
 export const Home = () => {
   const { user } = useContext(AuthContext)
