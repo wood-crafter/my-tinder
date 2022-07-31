@@ -57,10 +57,10 @@ export const Login = (props) =>  {
         <div className='form-inner'>
           <h2>Finder</h2>
           <div className='form-group'>
-            <Input type='text' name='name' id='name' onChange={e => setUsername(e.target.value)} value={username} placeholder='Name' />
+            <Input type='text' name='signinName' id='signin-name' onChange={e => setUsername(e.target.value)} value={username} placeholder='Name' />
           </div>
           <div className='form-group'>
-            <Input type='password' name='password' id='password' onChange={e => setPassword(e.target.value)} value={password} placeholder='Password' />
+            <Input type='password' name='signinPassword' id='signin-password' onChange={e => setPassword(e.target.value)} value={password} placeholder='Password' />
           </div>
           <div style={{ display: error ? 'block' : 'hidden' }} className='login-error' >{error}</div>
           <div className='submit-div'><button type='submit' className='submit'>Login</button></div>
@@ -75,10 +75,10 @@ export const Login = (props) =>  {
         <div className='form-inner'>
           <h2>Finder</h2>
           <div className='form-group'>
-            <Input type='text' name='name' id='name' onChange={e => setUsername(e.target.value)} value={username} placeholder='Name' />
+            <Input type='text' name='signupName' id='signup-name' onChange={e => setUsername(e.target.value)} value={username} placeholder='Name' />
           </div>
           <div className='form-group'>
-            <Input type='password' name='password' id='password' onChange={e => setPassword(e.target.value)} value={password} placeholder='Password' />
+            <Input type='password' name='signupPassword' id='signup-password' onChange={e => setPassword(e.target.value)} value={password} placeholder='Password' />
           </div>
           <div className='form-group'>
             <Input type='password' name='confirmPassword' id='confirm_password' onChange={e => setConfirmPassword(e.target.value)} value={confirmPassword} placeholder='Confirm Password' />
