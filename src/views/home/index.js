@@ -21,6 +21,9 @@ export const Home = () => {
       setMid(dogs[1])
       setRight(dogs[2])
     }
+    setLeft(dogs[0])
+    setMid(dogs[1])
+    setRight(dogs[2])
   }, [isFirstMount, dogs])
 
   const nextClickHandler = async () => {
