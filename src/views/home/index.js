@@ -16,14 +16,11 @@ export const Home = () => {
   const dogs = useInitDog()
 
   useEffect(() => {
-    if (isFirstMount.current) {
+    if (!isFirstMount.current) {
       setLeft(dogs[0])
       setMid(dogs[1])
       setRight(dogs[2])
     }
-    setLeft(dogs[0])
-    setMid(dogs[1])
-    setRight(dogs[2])
   }, [isFirstMount, dogs])
 
   const nextClickHandler = async () => {
