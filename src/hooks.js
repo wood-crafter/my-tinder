@@ -13,17 +13,22 @@ export const useFirstMount = () => {
   return isFirstMount
 }
 
-export const useInitDog = (flag) => {
+export const useInitDog = () => {
   const [initDogs, setInitDogs] = useState([])
+  const isFirstMount = useRef(true)
 
   useEffect(() => {
-    if (flag) {
+    if (isFirstMount.current) {
       Promise.all([getDog(), getDog(), getDog()])
         .then(dogs => {
           setInitDogs(() => {
             return dogs.map(dog => dog.message)
           })
         })
+    }
+
+    return () => {
+      isFirstMount.current = false
     }
   }, [])
 

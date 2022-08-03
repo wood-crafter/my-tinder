@@ -4,7 +4,6 @@ import { AuthContext } from '../../providers/use-auth'
 import { Navigate } from "react-router-dom";
 import './home.css'
 import { getDog } from '../../utils/fetch-request';
-import { useFirstMount } from '../../hooks';
 import { useInitDog } from '../../hooks';
 
 export const Home = () => {
@@ -12,16 +11,15 @@ export const Home = () => {
   const [left, setLeft] = useState(null)
   const [mid, setMid] = useState(null)
   const [right, setRight] = useState(null)
-  const isFirstMount = useFirstMount()
   const dogs = useInitDog()
 
   useEffect(() => {
-    if (!isFirstMount.current) {
-      setLeft(dogs[0])
-      setMid(dogs[1])
-      setRight(dogs[2])
-    }
-  }, [isFirstMount, dogs])
+    if (!dogs.length) return
+
+    setLeft(dogs[0])
+    setMid(dogs[1])
+    setRight(dogs[2])
+  }, [dogs])
 
   const nextClickHandler = async () => {
     setRight(mid)
