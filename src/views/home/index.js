@@ -4,23 +4,22 @@ import { AuthContext } from '../../providers/use-auth'
 import { Navigate } from "react-router-dom";
 import './home.css'
 import { getDog } from '../../utils/fetch-request';
+import { useInitDog } from '../../hooks';
 
 export const Home = () => {
   const { user } = useContext(AuthContext)
   const [left, setLeft] = useState(null)
   const [mid, setMid] = useState(null)
   const [right, setRight] = useState(null)
+  const dogs = useInitDog()
 
   useEffect(() => {
-    Promise.all([getDog(), getDog(), getDog()])
-      .then(dogs => {
-        const [leftDog, midDog, rightDog] = dogs.map(dog => dog.message)
-  
-        setLeft(leftDog)
-        setMid(midDog)
-        setRight(rightDog)
-      })
-  }, [])
+    if (!dogs.length) return
+
+    setLeft(dogs[0])
+    setMid(dogs[1])
+    setRight(dogs[2])
+  }, [dogs])
 
   const nextClickHandler = async () => {
     setRight(mid)
