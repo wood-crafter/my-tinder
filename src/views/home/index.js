@@ -5,6 +5,7 @@ import { Navigate } from "react-router-dom";
 import './home.css'
 import { getDog } from '../../utils/fetch-request';
 import { useInitDog } from '../../hooks';
+import { usePreloadDog } from '../../hooks';
 
 export const Home = () => {
   const { user } = useContext(AuthContext)
@@ -12,6 +13,7 @@ export const Home = () => {
   const [mid, setMid] = useState(null)
   const [right, setRight] = useState(null)
   const dogs = useInitDog()
+  const preloadDogs = usePreloadDog()
 
   useEffect(() => {
     if (!dogs.length) return
@@ -24,15 +26,13 @@ export const Home = () => {
   const nextClickHandler = async () => {
     setRight(mid)
     setMid(left)
-    const nextLeft = await getDog()
-    setLeft(nextLeft.message)
+    setLeft(preloadDogs.pop())
   }
 
   const previousClickHandler = async () => {
     setLeft(mid)
     setMid(right)
-    const nextRight = await getDog()
-    setRight(nextRight.message)
+    setRight(preloadDogs.pop())
   }
 
   if (!user) return <Navigate to="/login" />
