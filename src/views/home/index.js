@@ -3,7 +3,6 @@ import React, { useEffect, useState, useContext } from 'react'
 import { AuthContext } from '../../providers/use-auth'
 import { Navigate } from "react-router-dom";
 import './home.css'
-import { getDog } from '../../utils/fetch-request';
 import { useInitDog } from '../../hooks';
 import { usePreloadDog } from '../../hooks';
 
@@ -13,7 +12,8 @@ export const Home = () => {
   const [mid, setMid] = useState(null)
   const [right, setRight] = useState(null)
   const dogs = useInitDog()
-  const preloadDogs = usePreloadDog()
+  const [preloadDogs, setPreloadDogs] = usePreloadDog()
+  const preLoadImg = new Image()
 
   useEffect(() => {
     if (!dogs.length) return
@@ -23,16 +23,34 @@ export const Home = () => {
     setRight(dogs[2])
   }, [dogs])
 
+  useEffect(() => {
+    if (!preloadDogs.length) return
+    console.info(preloadDogs)
+
+    preLoadImg.src = preloadDogs[0]
+    preLoadImg.src = preloadDogs[1]
+    preLoadImg.src = preloadDogs[2]
+    preLoadImg.src = preloadDogs[3]
+  }, [preloadDogs])
+
   const nextClickHandler = async () => {
     setRight(mid)
     setMid(left)
-    setLeft(preloadDogs.pop())
+    setLeft(preloadDogs[preloadDogs.length - 1])
+    setPreloadDogs((preloadDogs) => {
+      preloadDogs.pop()
+      return preloadDogs
+    })
   }
 
   const previousClickHandler = async () => {
     setLeft(mid)
     setMid(right)
-    setRight(preloadDogs.pop())
+    setRight(preloadDogs[preloadDogs.length - 1])
+    setPreloadDogs((preloadDogs) => {
+      preloadDogs.pop()
+      return preloadDogs
+    })
   }
 
   if (!user) return <Navigate to="/login" />
