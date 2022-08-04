@@ -15,7 +15,7 @@ export const useFirstMount = () => {
 
 export const useInitDog = () => {
   const [initDogs, setInitDogs] = useState([])
-  const isFirstMount = useRef(true)
+  const isFirstMount = useFirstMount()
 
   useEffect(() => {
     if (isFirstMount.current) {
@@ -26,11 +26,7 @@ export const useInitDog = () => {
           })
         })
     }
-
-    return () => {
-      isFirstMount.current = false
-    }
-  }, [])
+  }, [isFirstMount])
 
   return initDogs
 }
