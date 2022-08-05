@@ -24,14 +24,10 @@ export const Home = () => {
   }, [dogs])
 
   useEffect(() => {
-    if (!preloadDogs.length) return
-    console.info(preloadDogs)
-
-    preLoadImg.src = preloadDogs[0]
-    preLoadImg.src = preloadDogs[1]
-    preLoadImg.src = preloadDogs[2]
-    preLoadImg.src = preloadDogs[3]
-  }, [preloadDogs])
+    preloadDogs.forEach(url => {
+      preLoadImg.src = url
+    })
+  }, [preloadDogs, preLoadImg])
 
   const nextClickHandler = async () => {
     setRight(mid)
