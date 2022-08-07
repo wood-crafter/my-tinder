@@ -4,7 +4,7 @@ import { Input } from '../../components'
 import { useAuth } from '../../providers/use-auth'
 import './login.css'
 
-export const Login = (props) =>  {
+export const Login = (props) => {
   const { redirectTo = '/' } = props
   const [username, setUsername] = useState('')
   const [isLoginShow, setIsLoginShow] = useState(true)
@@ -31,7 +31,7 @@ export const Login = (props) =>  {
   const signupHandler = async e => {
     e.preventDefault()
 
-    if(password !== confirmPassword) {
+    if (password !== confirmPassword) {
       setError('Confirm password not match')
       return
     }

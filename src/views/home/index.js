@@ -1,10 +1,10 @@
 import { NavBar } from '../../components'
 import React, { useEffect, useState, useContext } from 'react'
 import { AuthContext } from '../../providers/use-auth'
-import { Navigate } from "react-router-dom";
+import { Navigate } from 'react-router-dom'
 import './home.css'
-import { getDog } from '../../utils/fetch-request';
-import { useInitDog } from '../../hooks';
+import { getDog } from '../../utils/fetch-request'
+import { useInitDog } from '../../hooks'
 
 export const Home = () => {
   const { user } = useContext(AuthContext)
@@ -49,5 +49,4 @@ export const Home = () => {
       </div>
     </div>
   )
-
 }
