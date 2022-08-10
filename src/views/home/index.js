@@ -3,8 +3,7 @@ import React, { useEffect, useState, useContext } from 'react'
 import { AuthContext } from '../../providers/use-auth'
 import { Navigate } from 'react-router-dom'
 import './home.css'
-import { useInitDog } from '../../hooks';
-import { usePreloadDog } from '../../hooks';
+import { useInitDog, usePreloadDog } from '../../hooks'
 
 export const Home = () => {
   const { user } = useContext(AuthContext)

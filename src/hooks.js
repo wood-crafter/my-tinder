@@ -31,7 +31,6 @@ export const useInitDog = () => {
   return initDogs
 }
 
-
 export const usePreloadDog = () => {
   const [preloadDogs, setPreloadDogs] = useState([])
   const isFirstMount = useFirstMount()
