@@ -31,20 +31,11 @@ export const useInitDog = () => {
   return initDogs
 }
 
-export const usePreloadDog = () => {
+export const usePreloadDogs = () => {
   const [preloadDogs, setPreloadDogs] = useState([])
   const isFirstMount = useFirstMount()
 
   useEffect(() => {
-    if (!isFirstMount.current) {
-      console.info('Run one time')
-      getDog().then((dog) => {
-        setPreloadDogs((preloadDogs) => {
-          preloadDogs.push(dog.message)
-          return preloadDogs
-        })
-      })
-    }
     if (isFirstMount.current) {
       Promise.all([getDog(), getDog(), getDog()])
         .then(dogs => {
@@ -52,6 +43,14 @@ export const usePreloadDog = () => {
             return dogs.map(dog => dog.message)
           })
         })
+    } else {
+      console.info('Run once')
+      getDog().then((dog) => {
+        setPreloadDogs((preloadDogs) => {
+          preloadDogs.push(dog.message)
+          return preloadDogs
+        })
+      })
     }
   }, [isFirstMount, preloadDogs])
 
