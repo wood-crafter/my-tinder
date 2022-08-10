@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from 'react'
 import { postData } from '../utils/fetch-request'
-import {loginURL, signupURL} from '../utils/request-url'
+import { loginURL, signupURL } from '../utils/request-url'
 
 export const AuthContext = createContext(null)
 export const AuthProvider = ({ children }) => {
@@ -18,31 +18,29 @@ export const useAuth = () => {
 
   return {
     user,
-    async attemptLogin(username, password) {
-      const {status_code: statusCode} = await postData(loginURL, {username, password})
+    async attemptLogin (username, password) {
+      const { status_code: statusCode } = await postData(loginURL, { username, password })
 
-      if(statusCode === 200) {
-        setUser({username})
-      }
-      else {
+      if (statusCode === 200) {
+        setUser({ username })
+      } else {
         throw new Error('Credentials mismatch...!')
       }
     },
-    async attemptSignup(username, password) {
-      const {status_code: statusCode, errors} = await postData(signupURL, {username, password})
+    async attemptSignup (username, password) {
+      const { status_code: statusCode, errors } = await postData(signupURL, { username, password })
 
-      if(statusCode === 200) {
-        setUser({username})
+      if (statusCode === 200) {
+        setUser({ username })
         return
       }
-      if(statusCode === 409) {
+      if (statusCode === 409) {
         throw new Error('Signup infomation existed')
-      }
-      else {
+      } else {
         throw new Error(errors)
       }
     },
-    async logout() {
+    async logout () {
       setUser(null)
     }
   }

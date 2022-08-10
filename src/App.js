@@ -1,15 +1,15 @@
-import './app.css';
-import React from 'react';
+import './app.css'
+import React from 'react'
 
 import {
   BrowserRouter as Router,
   Routes,
-  Route,
-} from 'react-router-dom';
+  Route
+} from 'react-router-dom'
 
-import { Login, Home, Users, About } from './views';
+import { Login, Home, Users, About } from './views'
 import { RequireAuth } from './components'
-import { AuthProvider } from './providers/use-auth';
+import { AuthProvider } from './providers/use-auth'
 
 const AppRoutes = () => {
   return (
@@ -29,7 +29,7 @@ const AppRoutes = () => {
   )
 }
 
-function App() {
+function App () {
   return (
     <Router>
       <div className='App'>
@@ -43,7 +43,7 @@ function App() {
         </AuthProvider>
       </div>
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App

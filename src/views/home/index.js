@@ -1,7 +1,7 @@
 import { NavBar } from '../../components'
 import React, { useEffect, useState, useContext } from 'react'
 import { AuthContext } from '../../providers/use-auth'
-import { Navigate } from "react-router-dom";
+import { Navigate } from 'react-router-dom'
 import './home.css'
 import { useInitDog } from '../../hooks';
 import { usePreloadDog } from '../../hooks';
@@ -63,5 +63,4 @@ export const Home = () => {
       </div>
     </div>
   )
-
 }
