@@ -1,13 +1,25 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useCallback, useContext, useState } from 'react'
 import { postData } from '../utils/fetch-request'
 import { loginURL, signupURL } from '../utils/request-url'
 
+const USER_SS_KEY = '#_user_#'
+
 export const AuthContext = createContext(null)
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(JSON.parse(sessionStorage.getItem(USER_SS_KEY)))
+
+  const proxiedSetUser = useCallback((user) => {
+    if (user) {
+      sessionStorage.setItem(USER_SS_KEY, JSON.stringify(user))
+    } else {
+      sessionStorage.getItem(USER_SS_KEY)
+    }
+
+    setUser(user)
+  }, [])
 
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ user, setUser: proxiedSetUser }}>
       {children}
     </AuthContext.Provider>
   )
