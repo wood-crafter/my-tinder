@@ -31,6 +31,10 @@ export const useInitDog = () => {
   return initDogs
 }
 
+const preloadUrls = (urls) => {
+  urls.forEach(url => new Image(url))
+}
+
 export const usePreloadDogs = () => {
   const [preloadDogs, setPreloadDogs] = useState([])
   const isFirstMount = useFirstMount()
@@ -40,14 +44,22 @@ export const usePreloadDogs = () => {
       Promise.all([getDog(), getDog(), getDog()])
         .then(dogs => {
           setPreloadDogs(() => {
-            return dogs.map(dog => dog.message)
+            const dogUrls = dogs.map(dog => dog.message)
+
+            preloadUrls(dogUrls)
+
+            return dogUrls
           })
         })
     } else {
-      console.info('Run once')
       getDog().then((dog) => {
         setPreloadDogs((preloadDogs) => {
-          preloadDogs.push(dog.message)
+          const dogUrl = dog.message
+
+          preloadDogs.push(dogUrl)
+
+          preloadUrls([dogUrl])
+
           return preloadDogs
         })
       })

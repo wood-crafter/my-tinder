@@ -8,7 +8,6 @@ export const DogPics = () => {
   const [preloadDogs, setPreloadDogs] = usePreloadDogs()
 
   const dogs = useInitDog()
-  const preLoadImg = new Image()
 
   useEffect(() => {
     if (!dogs.length) return
@@ -17,12 +16,6 @@ export const DogPics = () => {
     setMid(dogs[1])
     setRight(dogs[2])
   }, [dogs])
-
-  useEffect(() => {
-    preloadDogs.forEach(url => {
-      preLoadImg.src = url
-    })
-  }, [preloadDogs, preLoadImg])
 
   const nextClickHandler = async () => {
     setRight(mid)
