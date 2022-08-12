@@ -1,41 +1,33 @@
-import React, { useEffect, useState } from 'react'
-import { useInitDog, usePreloadDogs } from '../hooks'
+import React, { useCallback, useEffect, useState } from 'react'
+import { usePreloadDogs } from '../hooks'
 
 export const DogPics = () => {
   const [left, setLeft] = useState(null)
   const [mid, setMid] = useState(null)
   const [right, setRight] = useState(null)
-  const [preloadDogs, setPreloadDogs] = usePreloadDogs()
-
-  const dogs = useInitDog()
+  const { getDog, isEmpty } = usePreloadDogs()
 
   useEffect(() => {
-    if (!dogs.length) return
+    if (isEmpty) return
 
-    setLeft(dogs[0])
-    setMid(dogs[1])
-    setRight(dogs[2])
-  }, [dogs])
+    if (left === null) return setLeft(getDog())
+    if (mid === null) return setMid(getDog())
+    if (right === null) return setRight(getDog())
+  }, [getDog, isEmpty, left, mid, right])
 
-  const nextClickHandler = async () => {
+  const nextClickHandler = useCallback(async () => {
     setRight(mid)
     setMid(left)
-    setLeft(preloadDogs[preloadDogs.length - 1])
-    setPreloadDogs((preloadDogs) => {
-      preloadDogs.pop()
-      return preloadDogs
-    })
-  }
 
-  const previousClickHandler = async () => {
+    setLeft(null)
+  }, [left, mid])
+
+  const previousClickHandler = useCallback(async () => {
     setLeft(mid)
     setMid(right)
-    setRight(preloadDogs[preloadDogs.length - 1])
-    setPreloadDogs((preloadDogs) => {
-      preloadDogs.pop()
-      return preloadDogs
-    })
-  }
+
+    setRight(null)
+  }, [mid, right])
 
   return (
     <div className='main-pic-div'>

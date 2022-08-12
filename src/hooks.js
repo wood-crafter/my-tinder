@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { getDog } from './utils/fetch-request'
+import { fetchDog } from './utils/fetch-request'
 
 export const useFirstMount = () => {
   const isFirstMount = useRef(true)
@@ -13,58 +13,78 @@ export const useFirstMount = () => {
   return isFirstMount
 }
 
-export const useInitDog = () => {
-  const [initDogs, setInitDogs] = useState([])
+const preloadUrls = (urls) => {
+  urls.forEach(url => {
+    console.info(new Image(url).loading)
+    console.info(url)
+  })
+}
+
+const useFirstMountEffect = (onFirstMount) => {
   const isFirstMount = useFirstMount()
 
   useEffect(() => {
     if (isFirstMount.current) {
-      Promise.all([getDog(), getDog(), getDog()])
-        .then(dogs => {
-          setInitDogs(() => {
-            return dogs.map(dog => dog.message)
-          })
-        })
+      onFirstMount()
     }
-  }, [isFirstMount])
+  }, [isFirstMount, onFirstMount])
 
-  return initDogs
-}
-
-const preloadUrls = (urls) => {
-  urls.forEach(url => new Image(url))
+  return { isFirstMount }
 }
 
 export const usePreloadDogs = () => {
-  const [preloadDogs, setPreloadDogs] = useState([])
-  const isFirstMount = useFirstMount()
+  const [preloadDogs, setPreloadDogs] = useState(new Set())
+  const preloadingCount = useRef(0)
 
-  useEffect(() => {
-    if (isFirstMount.current) {
-      Promise.all([getDog(), getDog(), getDog()])
-        .then(dogs => {
-          setPreloadDogs(() => {
-            const dogUrls = dogs.map(dog => dog.message)
+  const { isFirstMount } = useFirstMountEffect(() => {
+    preloadingCount.current = 3
 
-            preloadUrls(dogUrls)
+    Promise.all([fetchDog(), fetchDog(), fetchDog()])
+      .then(dogs => {
+        setPreloadDogs(() => {
+          const dogUrls = dogs.map(dog => dog.message)
 
-            return dogUrls
-          })
-        })
-    } else {
-      getDog().then((dog) => {
-        setPreloadDogs((preloadDogs) => {
-          const dogUrl = dog.message
+          preloadUrls(dogUrls)
+          preloadingCount.current = 0
 
-          preloadDogs.push(dogUrl)
-
-          preloadUrls([dogUrl])
-
-          return preloadDogs
+          return new Set(dogUrls)
         })
       })
-    }
-  }, [isFirstMount, preloadDogs])
+  })
 
-  return [preloadDogs, setPreloadDogs]
+  useEffect(() => {
+    if (isFirstMount.current) return
+    if (preloadDogs.size >= 3) return
+    if (preloadingCount.current >= 3) return
+
+    const preloadCount = 3 - preloadDogs.size
+
+    preloadingCount.current += preloadCount
+
+    const fetchPromises = Array.from({ length: preloadCount })
+      .map(fetchDog)
+
+    Promise.all(fetchPromises).then(dogs => {
+      const dogUrls = dogs.map(dog => dog.message)
+
+      preloadUrls(dogUrls)
+      preloadingCount.current -= preloadCount
+
+      setPreloadDogs((preloadDogs) => {
+        return new Set([...preloadDogs, ...dogUrls])
+      })
+    })
+  }, [preloadDogs, isFirstMount])
+
+  return {
+    getDog () {
+      if (preloadDogs.size === 0) return null
+
+      const [dog, ...otherDogs] = preloadDogs
+
+      setPreloadDogs(new Set(otherDogs))
+      return dog
+    },
+    isEmpty: preloadDogs.size === 0
+  }
 }
