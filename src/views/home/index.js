@@ -36,11 +36,11 @@ export const Home = () => {
   }
 
   const handleArrowKeyDown = async (e) => {
-    if (e.keyCode === 37) {
+    if (e.key === 'ArrowLeft') {
       await previousClickHandler()
     }
 
-    if (e.keyCode === 39) {
+    if (e.key === 'ArrowRight') {
       await nextClickHandler()
     }
   }
