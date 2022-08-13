@@ -14,7 +14,7 @@ export const Home = () => {
   if (!user) return <Navigate to="/login" />
 
   return (
-    <div className='home'>
+    <div className='home' tabIndex={0} >
       <NavBar />
       <DogPics />
     </div>

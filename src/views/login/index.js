@@ -14,7 +14,7 @@ export const Login = (props) => {
   const { attemptLogin, attemptSignup } = useAuth()
   const navigate = useNavigate()
 
-  const signinHandler = async e => {
+  const handleSignin = async e => {
     e.preventDefault()
 
     setError('')
@@ -28,7 +28,7 @@ export const Login = (props) => {
     }
   }
 
-  const signupHandler = async e => {
+  const handleSignup = async e => {
     e.preventDefault()
 
     if (password !== confirmPassword) {
@@ -47,13 +47,13 @@ export const Login = (props) => {
     }
   }
 
-  const changeFormShowingHandler = async e => {
+  const handleChangeFormShowing = async e => {
     setError('')
     setIsLoginShow(!isLoginShow)
   }
   return (
     <div className='login'>
-      <form onSubmit={signinHandler} className={`login-form ${isLoginShow ? 'showing' : 'not-showing'}`}>
+      <form onSubmit={handleSignin} className={`login-form ${isLoginShow ? 'showing' : 'not-showing'}`}>
         <div className='form-inner'>
           <h2>Finder</h2>
           <div className='form-group'>
@@ -66,12 +66,12 @@ export const Login = (props) => {
           <div className='submit-div'><button type='submit' className='submit'>Login</button></div>
           <div className='extra-action'>
             <div>Forgot password</div>
-            <button className='signup' onClick={changeFormShowingHandler} type='button'>Signup</button>
+            <button className='signup' onClick={handleChangeFormShowing} type='button'>Signup</button>
           </div>
         </div>
       </form>
 
-      <form onSubmit={signupHandler} className={`signup-form ${isLoginShow ? 'not-showing' : 'showing'}`}>
+      <form onSubmit={handleSignup} className={`signup-form ${isLoginShow ? 'not-showing' : 'showing'}`}>
         <div className='form-inner'>
           <h2>Finder</h2>
           <div className='form-group'>
@@ -87,7 +87,7 @@ export const Login = (props) => {
           <div className='submit-div'><button type='submit' className='submit'>Signup</button></div>
           <div className='extra-action'>
             <div>Already have account?</div>
-            <button className='signup' onClick={changeFormShowingHandler} type='button'>Login</button>
+            <button className='signup' onClick={handleChangeFormShowing} type='button'>Login</button>
           </div>
         </div>
       </form>

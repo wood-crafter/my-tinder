@@ -29,8 +29,17 @@ export const DogPics = () => {
     setRight(null)
   }, [mid, right])
 
+  const handleArrowKeyDown = async (e) => {
+    switch (e.key) {
+      case 'ArrowLeft': await previousClickHandler()
+        break
+      case 'ArrowRight': await nextClickHandler()
+        break
+    }
+  }
+
   return (
-    <div className='main-pic-div'>
+    <div className='main-pic-div' onKeyDown={handleArrowKeyDown}>
       <img className='left-pic' src={left ?? './demo-main-pic.jpg'} alt='' />
       <button onClick={previousClickHandler} className='previous' >&#8249;</button>
       <img className='middle-pic' src={mid ?? './demo-main-pic.jpg'} alt='' />
