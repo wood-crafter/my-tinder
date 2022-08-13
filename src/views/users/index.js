@@ -16,11 +16,11 @@ export const Users = () => {
     <div className='user' >
       <NavBar />
       <div className='container'>
-        <div id='name' >{dummyUserInfo.name}</div>
-        <div id='contact' >{dummyUserInfo.contact}</div>
-        <div id='info' >{dummyUserInfo.info}</div>
-        <div id='bio' >{dummyUserInfo.bio}</div>
-        <div id='type' >{dummyUserInfo.type}</div>
+        <div id='name' className='div-infor' >{dummyUserInfo.name}</div>
+        <div id='contact' className='div-infor' >{dummyUserInfo.contact}</div>
+        <div id='info' className='div-infor' >{dummyUserInfo.info}</div>
+        <div id='bio' className='div-infor' >{dummyUserInfo.bio}</div>
+        <div id='type' className='div-infor' >{dummyUserInfo.type}</div>
       </div>
 
     </div>

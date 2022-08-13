@@ -17,3 +17,6 @@
   width: 100vw;
   top: 3rem;
 }
+.div-infor {
+  flex-grow: 1;
+}
