@@ -13,13 +13,15 @@ export const Users = () => {
   // const dummyAlbum
 
   return (
-    <div className='user'>
+    <div className='user' >
       <NavBar />
-      <div className='name'>{dummyUserInfo.name}</div>
-      <div className='contact'>{dummyUserInfo.contact}</div>
-      <div className='info'>{dummyUserInfo.info}</div>
-      <div className='bio'>{dummyUserInfo.bio}</div>
-      <div className='type'>{dummyUserInfo.type}</div>
+      <div className='container'>
+        <div id='name' >{dummyUserInfo.name}</div>
+        <div id='contact' >{dummyUserInfo.contact}</div>
+        <div id='info' >{dummyUserInfo.info}</div>
+        <div id='bio' >{dummyUserInfo.bio}</div>
+        <div id='type' >{dummyUserInfo.type}</div>
+      </div>
 
     </div>
   )

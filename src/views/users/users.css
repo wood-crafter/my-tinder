@@ -7,9 +7,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
-.name {
-  width: 10rem;
-  height: 3rem;
+.container {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  width: 100vw;
+  top: 3rem;
 }
