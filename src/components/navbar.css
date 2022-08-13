@@ -1,9 +1,6 @@
 .navbar {
   display: flex;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
+  width: 100vw;
   border-bottom: 0.15rem solid rgba(255, 255, 255, 0.4);
   transform: 0.6s;
   box-shadow: 0 1rem 5rem rgba(0, 0, 0, 0.2);
