@@ -35,10 +35,20 @@ export const Home = () => {
     setRight(nextRight.message)
   }
 
+  const handleArrowKeyDown = async (e) => {
+    if (e.key === 'ArrowLeft') {
+      await previousClickHandler()
+    }
+
+    if (e.key === 'ArrowRight') {
+      await nextClickHandler()
+    }
+  }
+
   if (!user) return <Navigate to="/login" />
 
   return (
-    <div className='home'>
+    <div className='home' onKeyDown={handleArrowKeyDown} tabIndex={0} >
       <NavBar />
       <div className='main-pic-div'>
         <img className='left-pic' src={left ?? './demo-main-pic.jpg'} alt='' />
