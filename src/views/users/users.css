@@ -19,15 +19,28 @@
   flex-direction: column;
   width: 100vw;
 }
+
 .infor {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
   width: 80vw;
   height: 80vh;
 }
 
 .infor > * {
+  flex-grow: 1;
+}
+
+.master-infor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 80vh;
+}
+
+.master-infor > * {
   flex-grow: 1;
 }

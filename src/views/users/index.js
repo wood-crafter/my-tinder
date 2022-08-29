@@ -17,11 +17,17 @@ export const Users = () => {
       <NavBar />
       <div className='container'>
         <div className='infor' >
-          <div id='name' >{dummyUserInfo.name}</div>
-          <div id='contact' >{dummyUserInfo.contact}</div>
-          <div id='info' >{dummyUserInfo.info}</div>
-          <div id='bio' >{dummyUserInfo.bio}</div>
-          <div id='type' >{dummyUserInfo.type}</div>
+          <div className='account-infor'>
+
+          </div>
+
+          <div className='master-infor'>
+            <div id='name' >{dummyUserInfo.name}</div>
+            <div id='contact' >{dummyUserInfo.contact}</div>
+            <div id='info' >{dummyUserInfo.info}</div>
+            <div id='bio' >{dummyUserInfo.bio}</div>
+            <div id='type' >{dummyUserInfo.type}</div>
+          </div>
         </div>
       </div>
 
