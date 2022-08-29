@@ -18,7 +18,11 @@ export const Users = () => {
       <div className='container'>
         <div className='infor' >
           <div className='account-infor'>
-
+            <div className='avatar-container'>
+              <img src='https://avatars.githubusercontent.com/u/59172319?v=4' className='avatar'></img>
+            </div>
+            <div>Display name</div>
+            <div>Bio</div>
           </div>
 
           <div className='master-infor'>

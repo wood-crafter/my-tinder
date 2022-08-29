@@ -31,6 +31,7 @@
 
 .infor > * {
   flex-grow: 1;
+  border: 1px solid black;
 }
 
 .master-infor {
@@ -43,4 +44,31 @@
 
 .master-infor > * {
   flex-grow: 1;
+}
+
+.account-infor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 80vh;
+}
+
+.account-infor > * {
+  flex-grow: 1;
+}
+
+.avatar {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.avatar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
