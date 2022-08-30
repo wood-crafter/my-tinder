@@ -72,3 +72,21 @@
   align-items: center;
   flex-direction: column;
 }
+
+.user-profile-form-update {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 80vh;
+}
+
+.user-profile-form-update > * {
+  flex-grow: 1;
+}
+
+.master-detail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
