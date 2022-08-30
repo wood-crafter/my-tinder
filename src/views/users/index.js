@@ -55,9 +55,8 @@ export const Users = () => {
               <div id='address' className='master-detail' ><label htmlFor='user-profile-address' >Address: </label><input id='user-profile-address' placeholder={dummyUserInfo.info.address} value={address} onChange={e => setAddress(e.target.value)} ></input></div>
               <div id='facebook' className='master-detail' ><label htmlFor='user-profile-facebook' >Facebook: </label><input id='user-profile-facebook' placeholder={dummyUserInfo.info.facebook} value={facebook} onChange={e => setFacebook(e.target.value)} ></input></div>
               <div id='instagram' className='master-detail' ><label htmlFor='user-profile-instagram' >Instagram: </label><input id='user-profile-instagram' placeholder={dummyUserInfo.info.instagram} value={instagram} onChange={e => setInstagram(e.target.value)} ></input></div>
-              <button type='submit' >Change</button>
+              <div><button type='submit' className='submit-form' >Update</button></div>
             </form>
-            <div id='type' className='master-detail' >{dummyUserInfo.type}</div>
           </div>
         </div>
       </div>

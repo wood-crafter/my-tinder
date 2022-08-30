@@ -81,8 +81,12 @@
   height: 80vh;
 }
 
-.user-profile-form-update > * {
+.user-profile-form-update > div {
   flex-grow: 1;
+}
+
+.submit-form {
+  height: 1.5rem;
 }
 
 .master-detail {
