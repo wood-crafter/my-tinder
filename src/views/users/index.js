@@ -28,10 +28,10 @@ export const Users = () => {
             <div className='avatar-container'>
               <img src='https://avatars.githubusercontent.com/u/59172319?v=4' className='avatar'></img>
             </div>
-            <div>{dummyUserInfo.name}</div>
-            <div>{dummyUserInfo.bio}</div>
-            <div>{dummyUserInfo.interest}</div>
-            <div>{dummyUserInfo.jobTitle}</div>
+            <div><label htmlFor='user-profile-name' >Name: </label><input id='user-profile-name' placeholder={dummyUserInfo.name}></input></div>
+            <div><label htmlFor='user-profile-bio' >Bio: </label><input id='user-profile-bio' placeholder={dummyUserInfo.bio}></input></div>
+            <div><label htmlFor='user-profile-interest' >Interest: </label><input id='user-profile-interest' placeholder={dummyUserInfo.interest}></input></div>
+            <div><label htmlFor='user-profile-jobTitle' >Job title: </label><input id='user-profile-jobTitle' placeholder={dummyUserInfo.jobTitle}></input></div>
           </div>
 
           <div className='master-infor'>
