@@ -60,8 +60,8 @@ img {
   
   .main-pic-div {
     display: flex;
+    flex-grow: 1;
     width: 100vw;
-    height: 35rem;
     justify-content: space-around;
     align-items: center;
   }
