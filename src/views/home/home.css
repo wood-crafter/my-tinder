@@ -104,7 +104,7 @@ img {
   .main-pic-div {
     display: flex;
     width: 100vw;
-    height: 35rem;
+    flex-grow: 1;
     justify-content: space-around;
     align-items: center;
   }
