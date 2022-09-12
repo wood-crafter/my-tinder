@@ -33,7 +33,7 @@ const useFirstMountEffect = (onFirstMount) => {
 }
 
 export const usePreloadDogs = () => {
-  const [preloadDogs, setPreloadDogs] = useState(new Set())
+  const [preloadDogs, setPreloadDogs] = useState([])
   const preloadingCount = 7
 
   const { isFirstMount } = useFirstMountEffect(() => {
@@ -44,7 +44,7 @@ export const usePreloadDogs = () => {
 
           preloadUrls(dogUrls)
 
-          return new Set(dogUrls)
+          return dogUrls
         })
       })
   })
@@ -61,21 +61,17 @@ export const usePreloadDogs = () => {
       preloadUrls(dogUrls)
 
       setPreloadDogs((preloadDogs) => {
-        return new Set([...preloadDogs, ...dogUrls])
+        const dogs = dogUrls.concat(preloadDogs)
+        return dogs
       })
     })
   }, [isFirstMount])
 
   return {
-    getDog () {
-      if (preloadDogs.size === 0) return null
-
-      const [dog, ...otherDogs] = preloadDogs
-
-      setPreloadDogs(new Set(otherDogs))
-      console.info(preloadDogs)
-      return dog
+    getDog (dogIndex = 0) {
+      if (preloadDogs.length === 0) return null
+      return preloadDogs[dogIndex]
     },
-    isEmpty: preloadDogs.size === 0
+    isEmpty: preloadDogs.length === 0
   }
 }

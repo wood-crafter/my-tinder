@@ -6,27 +6,30 @@ export const DogPics = () => {
   const [mid, setMid] = useState(null)
   const [right, setRight] = useState(null)
   const { getDog, isEmpty } = usePreloadDogs()
+  let current = 1
 
   useEffect(() => {
     if (isEmpty) return
 
-    if (left === null) return setLeft(getDog())
-    if (mid === null) return setMid(getDog())
-    if (right === null) return setRight(getDog())
+    if (left === null) return setLeft(getDog(current - 1))
+    if (mid === null) return setMid(getDog(current))
+    if (right === null) return setRight(getDog(current + 1))
   }, [getDog, isEmpty, left, mid, right])
 
   const nextClickHandler = useCallback(async () => {
-    setRight(mid)
-    setMid(left)
+    current += 1
+    setRight(getDog(current + 1))
+    setMid(right)
 
-    setLeft(null)
+    setLeft(mid)
   }, [left, mid])
 
   const previousClickHandler = useCallback(async () => {
-    setLeft(mid)
-    setMid(right)
+    current -= 1
+    setLeft(getDog(current - 1))
+    setMid(left)
 
-    setRight(null)
+    setRight(mid)
   }, [mid, right])
 
   const handleArrowKeyDown = async (e) => {
