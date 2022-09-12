@@ -34,18 +34,15 @@ const useFirstMountEffect = (onFirstMount) => {
 
 export const usePreloadDogs = () => {
   const [preloadDogs, setPreloadDogs] = useState(new Set())
-  const preloadingCount = useRef(0)
+  const preloadingCount = 7
 
   const { isFirstMount } = useFirstMountEffect(() => {
-    preloadingCount.current = 3
-
     Promise.all([fetchDog(), fetchDog(), fetchDog()])
       .then(dogs => {
         setPreloadDogs(() => {
           const dogUrls = dogs.map(dog => dog.message)
 
           preloadUrls(dogUrls)
-          preloadingCount.current = 0
 
           return new Set(dogUrls)
         })
@@ -54,27 +51,20 @@ export const usePreloadDogs = () => {
 
   useEffect(() => {
     if (isFirstMount.current) return
-    if (preloadDogs.size >= 3) return
-    if (preloadingCount.current >= 3) return
 
-    const preloadCount = 3 - preloadDogs.size
-
-    preloadingCount.current += preloadCount
-
-    const fetchPromises = Array.from({ length: preloadCount })
+    const fetchPromises = Array.from({ length: preloadingCount })
       .map(fetchDog)
 
     Promise.all(fetchPromises).then(dogs => {
       const dogUrls = dogs.map(dog => dog.message)
 
       preloadUrls(dogUrls)
-      preloadingCount.current -= preloadCount
 
       setPreloadDogs((preloadDogs) => {
         return new Set([...preloadDogs, ...dogUrls])
       })
     })
-  }, [preloadDogs, isFirstMount])
+  }, [isFirstMount])
 
   return {
     getDog () {
@@ -83,6 +73,7 @@ export const usePreloadDogs = () => {
       const [dog, ...otherDogs] = preloadDogs
 
       setPreloadDogs(new Set(otherDogs))
+      console.info(preloadDogs)
       return dog
     },
     isEmpty: preloadDogs.size === 0
