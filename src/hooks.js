@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { fetchDog } from './utils/fetch-request'
 
 export const useFirstMount = () => {
@@ -14,10 +14,7 @@ export const useFirstMount = () => {
 }
 
 const preloadUrls = (urls) => {
-  urls.forEach(url => {
-    console.info(new Image(url).loading)
-    console.info(url)
-  })
+  urls.forEach(url => { new Image().src = url })
 }
 
 const useFirstMountEffect = (onFirstMount) => {
@@ -61,17 +58,17 @@ export const usePreloadDogs = () => {
       preloadUrls(dogUrls)
 
       setPreloadDogs((preloadDogs) => {
-        const dogs = dogUrls.concat(preloadDogs)
-        return dogs
+        return [...dogUrls, ...preloadDogs]
       })
     })
   }, [isFirstMount])
 
+  const getDog = useCallback((dogIndex) => {
+    return preloadDogs[dogIndex]
+  }, [preloadDogs])
+
   return {
-    getDog (dogIndex = 0) {
-      if (preloadDogs.length === 0) return null
-      return preloadDogs[dogIndex]
-    },
+    getDog,
     isEmpty: preloadDogs.length === 0
   }
 }

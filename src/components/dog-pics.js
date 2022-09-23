@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { usePreloadDogs } from '../hooks'
 
 export const DogPics = () => {
@@ -6,31 +6,32 @@ export const DogPics = () => {
   const [mid, setMid] = useState(null)
   const [right, setRight] = useState(null)
   const { getDog, isEmpty } = usePreloadDogs()
-  let current = 1
+  const currentIndex = useRef(1)
 
   useEffect(() => {
     if (isEmpty) return
 
-    if (left === null) return setLeft(getDog(current - 1))
-    if (mid === null) return setMid(getDog(current))
-    if (right === null) return setRight(getDog(current + 1))
+    if (left === null) return setLeft(getDog(currentIndex.current - 1))
+    if (mid === null) return setMid(getDog(currentIndex.current))
+    if (right === null) return setRight(getDog(currentIndex.current + 1))
   }, [getDog, isEmpty, left, mid, right])
 
   const nextClickHandler = useCallback(async () => {
-    current += 1
-    setRight(getDog(current + 1))
+    currentIndex.current += 1
+
+    setRight(getDog(currentIndex.current + 1))
     setMid(right)
 
     setLeft(mid)
-  }, [left, mid])
+  }, [mid, right, getDog])
 
   const previousClickHandler = useCallback(async () => {
-    current -= 1
-    setLeft(getDog(current - 1))
+    currentIndex.current -= 1
     setMid(left)
-
     setRight(mid)
-  }, [mid, right])
+
+    setLeft(getDog(currentIndex.current - 1))
+  }, [mid, left, getDog])
 
   const handleArrowKeyDown = async (e) => {
     switch (e.key) {
@@ -43,11 +44,20 @@ export const DogPics = () => {
 
   return (
     <div className='main-pic-div' onKeyDown={handleArrowKeyDown}>
-      <img className='left-pic' src={left ?? './demo-main-pic.jpg'} alt='' />
+      <AsyncImg className="left-pic" src={left} />
       <button onClick={previousClickHandler} className='previous' >&#8249;</button>
-      <img className='middle-pic' src={mid ?? './demo-main-pic.jpg'} alt='' />
+      <AsyncImg className="middle-pic" src={mid} />
       <button onClick={nextClickHandler} className='next' >&#8250;</button>
-      <img className='right-pic' src={right ?? './demo-main-pic.jpg'} alt='' />
+      <AsyncImg className="right-pic" src={right} />
     </div>
+  )
+}
+
+const AsyncImg = ({ src, className }) => {
+  return (
+    <img
+      className={className}
+      src={src || './demo-main-pic.jpg'}
+    />
   )
 }
