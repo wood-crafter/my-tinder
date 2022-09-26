@@ -49,7 +49,7 @@ export const usePreloadDogs = () => {
   useEffect(() => {
     if (isFirstMount.current) return
 
-    const fetchPromises = Array.from({ length: preloadingCount })
+    const fetchPromises = Array.from({ length: preloadingCount - 3 })
       .map(fetchDog)
 
     Promise.all(fetchPromises).then(dogs => {
