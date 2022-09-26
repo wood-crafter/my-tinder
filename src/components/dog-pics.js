@@ -17,7 +17,7 @@ export const DogPics = () => {
   }, [getDog, isEmpty, left, mid, right])
 
   const nextClickHandler = useCallback(async () => {
-    currentIndex.current += 1
+    currentIndex.current = (currentIndex.current + 1) % 10
 
     setRight(getDog(currentIndex.current + 1))
     setMid(right)
@@ -26,7 +26,8 @@ export const DogPics = () => {
   }, [mid, right, getDog])
 
   const previousClickHandler = useCallback(async () => {
-    currentIndex.current -= 1
+    currentIndex.current = (currentIndex.current === 0 ? 9 : (currentIndex.current - 1) % 10)
+
     setMid(left)
     setRight(mid)
 
