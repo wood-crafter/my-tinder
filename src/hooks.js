@@ -31,7 +31,7 @@ const useFirstMountEffect = (onFirstMount) => {
 
 export const usePreloadDogs = () => {
   const [preloadDogs, setPreloadDogs] = useState([])
-  const preloadingCount = 7
+  const preloadingCount = 10
 
   const { isFirstMount } = useFirstMountEffect(() => {
     Promise.all([fetchDog(), fetchDog(), fetchDog()])
@@ -49,7 +49,7 @@ export const usePreloadDogs = () => {
   useEffect(() => {
     if (isFirstMount.current) return
 
-    const fetchPromises = Array.from({ length: preloadingCount - 3 })
+    const fetchPromises = Array.from({ length: (preloadingCount - 3) })
       .map(fetchDog)
 
     Promise.all(fetchPromises).then(dogs => {
@@ -58,7 +58,7 @@ export const usePreloadDogs = () => {
       preloadUrls(dogUrls)
 
       setPreloadDogs((preloadDogs) => {
-        return [...dogUrls, ...preloadDogs]
+        return [...preloadDogs, ...dogUrls]
       })
     })
   }, [isFirstMount])
