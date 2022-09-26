@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react'
-import { getDog } from './utils/fetch-request'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { fetchDog } from './utils/fetch-request'
 
 export const useFirstMount = () => {
   const isFirstMount = useRef(true)
@@ -13,20 +13,62 @@ export const useFirstMount = () => {
   return isFirstMount
 }
 
-export const useInitDog = () => {
-  const [initDogs, setInitDogs] = useState([])
+const preloadUrls = (urls) => {
+  urls.forEach(url => { new Image().src = url })
+}
+
+const useFirstMountEffect = (onFirstMount) => {
   const isFirstMount = useFirstMount()
 
   useEffect(() => {
     if (isFirstMount.current) {
-      Promise.all([getDog(), getDog(), getDog()])
-        .then(dogs => {
-          setInitDogs(() => {
-            return dogs.map(dog => dog.message)
-          })
-        })
+      onFirstMount()
     }
+  }, [isFirstMount, onFirstMount])
+
+  return { isFirstMount }
+}
+
+export const usePreloadDogs = () => {
+  const [preloadDogs, setPreloadDogs] = useState([])
+  const preloadingCount = 10
+
+  const { isFirstMount } = useFirstMountEffect(() => {
+    Promise.all([fetchDog(), fetchDog(), fetchDog()])
+      .then(dogs => {
+        setPreloadDogs(() => {
+          const dogUrls = dogs.map(dog => dog.message)
+
+          preloadUrls(dogUrls)
+
+          return dogUrls
+        })
+      })
+  })
+
+  useEffect(() => {
+    if (isFirstMount.current) return
+
+    const fetchPromises = Array.from({ length: (preloadingCount - 3) })
+      .map(fetchDog)
+
+    Promise.all(fetchPromises).then(dogs => {
+      const dogUrls = dogs.map(dog => dog.message)
+
+      preloadUrls(dogUrls)
+
+      setPreloadDogs((preloadDogs) => {
+        return [...preloadDogs, ...dogUrls]
+      })
+    })
   }, [isFirstMount])
 
-  return initDogs
+  const getDog = useCallback((dogIndex) => {
+    return preloadDogs[dogIndex]
+  }, [preloadDogs])
+
+  return {
+    getDog,
+    isEmpty: preloadDogs.length === 0
+  }
 }
