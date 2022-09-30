@@ -11,9 +11,9 @@ export const DogPics = () => {
   useEffect(() => {
     if (isEmpty) return
 
-    if (left === null) return setLeft(getDog(currentIndex.current - 1))
-    if (mid === null) return setMid(getDog(currentIndex.current))
-    if (right === null) return setRight(getDog(currentIndex.current + 1))
+    if (!left) return setLeft(getDog(currentIndex.current - 1))
+    if (!mid) return setMid(getDog(currentIndex.current))
+    if (!right) return setRight(getDog(currentIndex.current + 1))
   }, [getDog, isEmpty, left, mid, right])
 
   const nextClickHandler = useCallback(async () => {
