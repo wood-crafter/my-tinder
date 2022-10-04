@@ -31,7 +31,7 @@ export const useAuth = () => {
   return {
     user,
     async attemptLogin (username, password) {
-      const { status_code: statusCode } = await postData(loginURL, { username, password })
+      const { statusCode } = await postData(loginURL, { username, password })
 
       if (statusCode === 200) {
         setUser({ username })
@@ -40,7 +40,7 @@ export const useAuth = () => {
       }
     },
     async attemptSignup (username, password) {
-      const { status_code: statusCode, errors } = await postData(signupURL, { username, password })
+      const { statusCode, errors } = await postData(signupURL, { username, password })
 
       if (statusCode === 200) {
         setUser({ username })
